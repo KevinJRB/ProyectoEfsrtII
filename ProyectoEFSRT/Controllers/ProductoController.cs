@@ -11,10 +11,14 @@ namespace ProyectoEFSRT.Controllers
 {
     public class ProductoController : Controller
     {
+        ProductosDAO prodao = new ProductosDAO();
+
+
         // GET: Producto
-        public ActionResult Index()
+        public ActionResult IndexProductos()
         {
-            return View();
+
+            return View(prodao.GetProductos());
         }
 
         // GET: Producto/Details/5
@@ -24,24 +28,30 @@ namespace ProyectoEFSRT.Controllers
         }
 
         // GET: Producto/Create
-        public ActionResult Create()
+        public ActionResult CreateProducto()
         {
-            return View();
+            Producto nprod = new Producto();
+
+            return View(nprod);
         }
 
         // POST: Producto/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult CreateProducto(Producto prod)
         {
             try
             {
-                // TODO: Add insert logic here
+                if(ModelState.IsValid)
+                {
+                    TempData["mensaje"]=prodao.InsertarProducto(prod);
+                }
 
-                return RedirectToAction("Index");
+                return RedirectToAction("IndexProductos");
             }
-            catch
+            catch(Exception ex)
             {
-                return View();
+                ViewBag.mensaje=ex.Message;
+                return View(prod);
             }
         }
 

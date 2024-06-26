@@ -123,7 +123,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
-    <Compile Include="DAO\PorductoDAO.cs" />
+    <Compile Include="DAO\ProductoDAO.cs" />
     <Compile Include="DAO\TipoUsuarioDAO.cs" />
     <Compile Include="DAO\UsuarioDAo.cs" />
     <Compile Include="Global.asax.cs">

@@ -1,0 +1,2 @@
+C:\Users\Lenovo.Z50\Documents\Ciber 2024-1\POOII\Workspace\ProyectoEFSRT\ProyectoEFSRT\obj\Debug\ProyectoEFSRT.csproj.AssemblyReference.cache
+C:\Users\Lenovo.Z50\Documents\Ciber 2024-1\POOII\Workspace\ProyectoEFSRT\ProyectoEFSRT\obj\Debug\ProyectoEFSRT.csproj.CoreCompileInputs.cache
