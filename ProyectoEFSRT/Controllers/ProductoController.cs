@@ -22,9 +22,10 @@ namespace ProyectoEFSRT.Controllers
         }
 
         // GET: Producto/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string id)
         {
-            return View();
+            Producto p = prodao.GetProductos().Find(pro => pro.CodProd == id);
+            return View(p);
         }
 
         // GET: Producto/Create
@@ -56,42 +57,49 @@ namespace ProyectoEFSRT.Controllers
         }
 
         // GET: Producto/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult EditProducto(string id)
         {
+            Producto p = prodao.GetProductos().Find(pro => pro.CodProd == id);
             return View();
         }
 
         // POST: Producto/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult EditProducto(string id, Producto pro)
         {
             try
             {
-                // TODO: Add update logic here
+                if (ModelState.IsValid==true)
+                {
+                    TempData["mensaje"] = prodao.ActualizarProducto(pro);
+                    return RedirectToAction("IndexProductos");
 
-                return RedirectToAction("Index");
+                }
             }
-            catch
+            catch(Exception ex)
             {
-                return View();
+                ViewBag.mensaje =  ex.Message;
+                
             }
+            return View(pro);
         }
 
         // GET: Producto/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult BorrarProducto(string id)
         {
-            return View();
+            Producto p = prodao.GetProductos().Find(pro => pro.CodProd == id);
+            return View(p);
         }
 
         // POST: Producto/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult BorrarProducto(string id, FormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
+                TempData["mensaje"] = prodao.EliminarProducto(id);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("IndexProductos");
             }
             catch
             {

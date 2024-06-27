@@ -11,82 +11,203 @@ namespace ProyectoEFSRT.Controllers
 {
     public class UsuarioController : Controller
     {
+        UsuariosDAO usdao = new UsuariosDAO();
+        TipoUsuarioDAO tusdao = new TipoUsuarioDAO();
+
         // GET: Usuario
-        public ActionResult Index()
+        public ActionResult IndexUsuario()
         {
-            return View();
+
+            return View(usdao.GetUsuarios());
         }
 
         // GET: Usuario/Details/5
-        public ActionResult Details(int id)
+        public ActionResult DetailsUsuario(string id)
         {
-            return View();
+            Usuario u = usdao.GetUsuarios().Find(us => us.CodUs ==id);
+            return View(u);
         }
 
         // GET: Usuario/Create
-        public ActionResult Create()
+        public ActionResult CreateUsuario()
         {
-            return View();
+            Usuario neuve = new Usuario();
+            ViewBag.tipou = new SelectList(tusdao.GetTiposUsuario(),"IdTpu", "NomTpu");
+            return View(neuve);
         }
 
         // POST: Usuario/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult CreateUsuario(Usuario us)
         {
             try
             {
-                // TODO: Add insert logic here
+                if(ModelState.IsValid==true)
+                {
+                    TempData["mensaje"] = usdao.InsertarUsuario(us);
+                }
 
-                return RedirectToAction("Index");
+                return RedirectToAction("IndexUsuario");
             }
-            catch
+            catch(Exception ex)
             {
-                return View();
+                ViewBag.mensaje = ex.Message;
+
+                ViewBag.tipou = new SelectList(tusdao.GetTiposUsuario(), "IdTpu", "NomTpu");
+
+                return View(us);
             }
         }
 
         // GET: Usuario/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult EditUsuario(string id)
         {
-            return View();
+            Usuario u = usdao.GetUsuarios().Find(us => us.CodUs == id);
+            ViewBag.tipou = new SelectList(tusdao.GetTiposUsuario(), "IdTpu", "NomTpu");
+
+            return View(u);
         }
 
         // POST: Usuario/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult EditUsuario(string id, Usuario us)
         {
             try
             {
-                // TODO: Add update logic here
+                if (ModelState.IsValid == true)
+                {
+                    TempData["mensaje"] = usdao.ActualizarUsuario(us);
+                    return RedirectToAction("IndexUsuario");
 
-                return RedirectToAction("Index");
+                }
             }
-            catch
+            catch(Exception ex)
             {
-                return View();
+                ViewBag.mensaje = ex.Message;
+                
             }
+            ViewBag.tipou = new SelectList(tusdao.GetTiposUsuario(), "IdTpu", "NomTpu");
+
+            return View(us);
         }
 
         // GET: Usuario/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult DeleteUsuario(string id)
         {
-            return View();
+            Usuario u = usdao.GetUsuarios().Find(us => us.CodUs == id);
+
+            return View(u);
         }
 
         // POST: Usuario/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult DeleteUsuario(string id, FormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
+                if (ModelState.IsValid == true)
+                {
+                    TempData["mensaje"] = usdao.EliminarUsuario(id);
+                    return RedirectToAction("IndexUsuario");
 
-                return RedirectToAction("Index");
+                }
+
             }
-            catch
+            catch(Exception ex)
             {
-                return View();
+                ViewBag.mensaje = ex.Message;
             }
+            return View();
+
+        }
+        /////////////////////////////////////////Tipo Usuario
+        public ActionResult IndexTUsuario()
+        {
+            return View(tusdao.GetTiposUsuario());
+
+        }
+        public ActionResult CreateTUsuario()
+        {
+            TipoUsuario neuve = new TipoUsuario();
+            return View(neuve);
+        }
+        [HttpPost]
+        public ActionResult CreateTUsuario(TipoUsuario tus)
+        {
+            try
+            {
+                if (ModelState.IsValid == true)
+                {
+                    TempData["mensaje"] = tusdao.InsertarTipoUsuario(tus);
+                }
+
+                return RedirectToAction("IndexTUsuario");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.mensaje = ex.Message;
+
+                return View(tus);
+            }
+
+        }
+        public ActionResult EditTUsuario(int id)
+        {
+            TipoUsuario tu = tusdao.GetTiposUsuario().Find(tus => tus.IdTpu == id);
+
+            return View(tu);
+        }
+
+        // POST: Usuario/Edit/5
+        [HttpPost]
+        public ActionResult EditTUsuario(int id, TipoUsuario tus)
+        {
+            try
+            {
+                if (ModelState.IsValid == true)
+                {
+                    TempData["mensaje"] = tusdao.ActualizarTipoUsuario(tus);
+                    return RedirectToAction("IndexTUsuario");
+
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.mensaje = ex.Message;
+
+            }
+
+            return View(tus);
+        }
+
+        // GET: Usuario/Delete/5
+        public ActionResult DeleteTUsuario(int id)
+        {
+            TipoUsuario tu = tusdao.GetTiposUsuario().Find(tus => tus.IdTpu == id);
+
+            return View(tu);
+        }
+
+        // POST: Usuario/Delete/5
+        [HttpPost]
+        public ActionResult DeleteTUsuario(string id, FormCollection collection)
+        {
+            try
+            {
+                if (ModelState.IsValid == true)
+                {
+                    TempData["mensaje"] = tusdao.EliminarTipoUsuario(id);
+                    return RedirectToAction("IndexTUsuario");
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ViewBag.mensaje = ex.Message;
+            }
+            return View();
+
         }
     }
 }
