@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ProyectoEFSRT.Models.Producto>
+
+@{
+    ViewBag.Title = "IndexProductos";
+}
+
+<h2>Productos</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateProducto")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CodProd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NomProd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescProd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PreProd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StkProd)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodProd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomProd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DescProd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PreProd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StkProd)
+        </td>
+        <td>
+            @Html.ActionLink("Modificar", "EditProducto", new {  id=item.CodProd }) |
+            @Html.ActionLink("Ver Detalle", "Details", new {  id=item.CodProd }) |
+            @Html.ActionLink("Eliminar", "BorrarProducto", new {  id=item.CodProd })
+        </td>
+    </tr>
+}
+
+</table>

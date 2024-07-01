@@ -14,6 +14,9 @@ stk_prod int null
 )
 go
 
+select*from Productos
+go
+
 insert into Productos values
 (101334,'Test 1','Desc test 1',30.5,5),
 (101213,'Test 2','Desc test 2',30.0,0),
@@ -91,8 +94,11 @@ create or alter procedure pa_insertar_producto
 @COD_PROD char(6),@NOM_PROD varchar(40),@DESC_PROD varchar(50),
 @PRE_PROD decimal(6,2),@STK_PROD int
 as
-	insert into Productos values(@COD_PROD,@NOM_PROD,@DESC_PROD,@PRE_PROD,
+	insert into Productos (cod_prod,nom_prod,desc_prod,pre_prod,stk_prod)values(@COD_PROD,@NOM_PROD,@DESC_PROD,@PRE_PROD,
 	@STK_PROD)
+go
+
+execute pa_insertar_producto '199832','Test44','Test',20,20
 go
 
 --Actualizar
@@ -126,7 +132,7 @@ go
 create or alter procedure pa_insertar_tipousuario
 @ID_TPU char(1),@NOM_TPU varchar(20)
 as
-	insert into tipousuario values(@ID_TPU,@NOM_TPU)
+	insert into tipousuario (id_tpu,nom_tpu) values(@ID_TPU,@NOM_TPU)
 go
 
 
@@ -155,13 +161,13 @@ go
 ------------PAs usuario
 
 --Insertar usuario
-create or alter procedure pa_insertar_usuario
+/*create or alter procedure pa_insertar_usuario
 @COD_US char(6),@NOM_US varchar(25),@CTR_US varchar(25),
 @ID_TPU char(1),@EST_US varchar(10),@COR_US varchar(25)
 as
 	insert into Usuarios(cod_us,nom_us,ctr_us,id_tpu,est_us,cor_us) values(@COD_US,@NOM_US,@CTR_US,@ID_TPU,
 	@EST_US,@COR_US)
-go
+go*/
 
 
 --Actualizar usuario

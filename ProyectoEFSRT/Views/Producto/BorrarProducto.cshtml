@@ -1,0 +1,64 @@
+﻿@model ProyectoEFSRT.Models.Producto
+
+@{
+    ViewBag.Title = "BorrarProducto";
+}
+
+<h2>BorrarProducto</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Producto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CodProd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodProd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomProd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomProd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DescProd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescProd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PreProd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PreProd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StkProd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StkProd)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
