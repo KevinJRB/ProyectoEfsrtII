@@ -22,7 +22,7 @@ namespace ProyectoEFSRT.Controllers
         }
 
         // GET: Usuario/Details/5
-        public ActionResult DetailsUsuario(string id)
+        public ActionResult DetalleUsuario(string id)
         {
             Usuario u = usdao.GetUsuarios().Find(us => us.CodUs ==id);
             return View(u);

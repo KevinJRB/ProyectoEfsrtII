@@ -1,0 +1,66 @@
+﻿@model ProyectoEFSRT.Models.Usuario
+
+@{
+    ViewBag.Title = "DetalleUsuario";
+}
+
+<h2>DetalleUsuario</h2>
+
+<div>
+    <h4>Usuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CodUs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodUs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomUs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomUs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CtrUs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CtrUs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdTpu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdTpu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstUs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstUs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CorUs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CorUs)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,72 @@
+﻿@model ProyectoEFSRT.Models.Usuario
+
+@{
+    ViewBag.Title = "DeleteUsuario";
+}
+
+<h2>DeleteUsuario</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Usuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CodUs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodUs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomUs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomUs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CtrUs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CtrUs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdTpu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdTpu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstUs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstUs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CorUs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CorUs)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ProyectoEFSRT.Models.TipoUsuario>
+
+@{
+    ViewBag.Title = "IndexTUsuario";
+}
+
+<h2>Tipo De Usuario</h2>
+
+@if (TempData["mensaje"] != null)
+
+{
+
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+
+        <strong>@TempData["mensaje"]</strong>
+
+        <button type="button" class="btn-close"
+                data-bs-dismiss="alert" aria-label="Close">
+        </button>
+
+    </div>
+
+}
+
+<br />
+
+<p>
+    @Html.ActionLink("Nuevo Tipo", "CreateTUsuario")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdTpu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NomTpu)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdTpu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomTpu)
+            </td>
+            <td>
+                @Html.ActionLink("Modificar", "EditTUsuario", new { id=item.IdTpu }, new { @class = "btn btn-success btn-sm" })) |
+                @Html.ActionLink("Eliminar", "DeleteTUsuario", new { id=item.IdTpu  })
+            </td>
+        </tr>
+    }
+
+</table>

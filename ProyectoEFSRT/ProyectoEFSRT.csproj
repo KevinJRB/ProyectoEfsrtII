@@ -190,10 +190,18 @@
     <Content Include="Views\Producto\CreateProducto.cshtml" />
     <Content Include="Views\Producto\EditProducto.cshtml" />
     <Content Include="Views\Producto\BorrarProducto.cshtml" />
+    <Content Include="Views\Usuario\IndexUsuario.cshtml" />
+    <Content Include="Views\Usuario\DetalleUsuario.cshtml" />
+    <Content Include="Views\Usuario\CreateUsuario.cshtml" />
+    <Content Include="Views\Usuario\EditUsuario.cshtml" />
+    <Content Include="Views\Usuario\DeleteUsuario.cshtml" />
+    <Content Include="Views\Usuario\IndexTUsuario.cshtml" />
+    <Content Include="Views\Usuario\CreateTUsuario.cshtml" />
+    <Content Include="Views\Usuario\EditTUsuario.cshtml" />
+    <Content Include="Views\Usuario\DeleteTUsuario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Usuario\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

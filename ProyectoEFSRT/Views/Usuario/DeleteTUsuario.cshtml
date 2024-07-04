@@ -1,0 +1,47 @@
+﻿@model ProyectoEFSRT.Models.TipoUsuario
+
+@{
+    ViewBag.Title = "DeleteTUsuario";
+}
+
+<h2>Eliminar Tipo</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>TipoUsuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdTpu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdTpu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomTpu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomTpu)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Volver a Lista", "IndexTUsuario")
+        </div>
+    }
+</div>
+
+<br />
+
+<div>
+    @ViewBag.mensaje
+</div>

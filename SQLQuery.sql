@@ -14,6 +14,9 @@ stk_prod int null
 )
 go
 
+delete from Productos
+go
+
 select*from Productos
 go
 
@@ -24,14 +27,20 @@ insert into Productos values
 go
 
 insert into Productos values
-(101123,'Test 4','Desc test 4',37.5,14),
-(101512,'Test 5','Desc test 5',20,50),
-(102523,'Test 6','Desc test 6',100,2)
+(100022,'Teclado Logictech','Teclado Comun',37.5,14),
+(100023,'Mouse Teraware 4W019 ','Mouse gamer Teraware',20,50),
+(100024,'Test 6','Desc test 6',100,2),
+(100025,'Teclado Logictech','Teclado Comun',37.5,14),
+(100026,'Mouse Teraware 4W019 ','Mouse gamer Teraware',20,50),
+(100027,'Test 6','Desc test 6',100,2),
+(100028,'Teclado Logictech','Teclado Comun',37.5,14),
+(100029,'Mouse Teraware 4W019 ','Mouse gamer Teraware',20,50),
+(100030,'Test 6','Desc test 6',100,2),
+(100031,'Teclado Logictech','Teclado Comun',37.5,14),
+(100032,'Mouse Teraware 4W019 ','Mouse gamer Teraware',20,50),
+(100034,'Test 6','Desc test 6',100,2)
 go
 
-insert into Productos values
-(103223,'Best 4','Desc test 4',37.5,14)
-go
 
 /*alter table Productos
 add
@@ -118,10 +127,10 @@ as
 	select a.cod_prod,a.nom_prod,a.desc_prod,a.pre_prod,
 	a.stk_prod
 	from Productos a
-	where a.nom_prod like @NOM_PROD+'%'
+	where a.nom_prod like @NOM_PROD+'%' and eli_prod='NO'
 go
 
-execute pa_listar_producto 'B'
+execute pa_listar_producto ''
 go
 
 --Eliminar
@@ -150,7 +159,7 @@ create or alter procedure pa_listar_tipousuario
 as
 	select a.id_tpu,a.nom_tpu
 	from tipoUsuario a
-	where a.nom_tpu like @NOM_TPU+'%'
+	where a.nom_tpu like @NOM_TPU+'%' and eli_tip = 'No'
 go
 
 execute pa_listar_producto 'B'
@@ -187,7 +196,7 @@ as
 	select a.cod_us,a.nom_us,a.ctr_us,a.id_tpu,
 	a.est_us,a.cor_us
 	from Usuarios a
-	where a.nom_us like @NOM_US+'%'
+	where a.nom_us like @NOM_US+'%' and eli_us='No'
 go
 
 use Efsrt2

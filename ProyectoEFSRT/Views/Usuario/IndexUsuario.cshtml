@@ -1,0 +1,78 @@
+﻿@model IEnumerable<ProyectoEFSRT.Models.Usuario>
+
+@{
+    ViewBag.Title = "IndexUsuario";
+}
+
+<h2>Lista Usuarios</h2>
+
+<div class="alert alert-info alert-dismissible fade show" role="alert">
+
+    <strong>@TempData["mensaje"]</strong>
+
+    <button type="button" class="btn-close"
+            data-bs-dismiss="alert" aria-label="Close">
+    </button>
+
+</div>
+
+}
+
+<br />
+
+<p>
+    @Html.ActionLink("Nuevo", "CreateUsuario")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CodUs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NomUs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CtrUs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdTpu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EstUs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CorUs)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodUs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomUs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CtrUs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdTpu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EstUs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CorUs)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditUsuario", new {  id=item.CodUs  }) |
+                @Html.ActionLink("Details", "DetalleUsuario", new {  id=item.CodUs  }) |
+                @Html.ActionLink("Delete", "DeleteUsuario", new {  id=item.CodUs  })
+            </td>
+        </tr>
+    }
+
+</table>
