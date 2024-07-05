@@ -14,31 +14,25 @@ stk_prod int null
 )
 go
 
-delete from Productos
-go
 
-select*from Productos
-go
 
-insert into Productos values
-(101334,'Test 1','Desc test 1',30.5,5),
-(101213,'Test 2','Desc test 2',30.0,0),
-(102141,'Test 3','Desc test 3',40.5,15)
-go
-
-insert into Productos values
+insert into Productos (cod_prod,nom_prod,desc_prod,pre_prod,stk_prod)
+values
 (100022,'Teclado Logictech','Teclado Comun',37.5,14),
-(100023,'Mouse Teraware 4W019 ','Mouse gamer Teraware',20,50),
-(100024,'Test 6','Desc test 6',100,2),
-(100025,'Teclado Logictech','Teclado Comun',37.5,14),
-(100026,'Mouse Teraware 4W019 ','Mouse gamer Teraware',20,50),
-(100027,'Test 6','Desc test 6',100,2),
-(100028,'Teclado Logictech','Teclado Comun',37.5,14),
-(100029,'Mouse Teraware 4W019 ','Mouse gamer Teraware',20,50),
-(100030,'Test 6','Desc test 6',100,2),
-(100031,'Teclado Logictech','Teclado Comun',37.5,14),
-(100032,'Mouse Teraware 4W019 ','Mouse gamer Teraware',20,50),
-(100034,'Test 6','Desc test 6',100,2)
+(100023,'Mouse Teraware 4W019 ','Mouse gamer Teraware',20, 50),
+(100024,'Logitech g20','Mouse gamer',270,15),
+(100025,'SanDisk Cruser Blade 8GB','Memoria USB',20,60),
+(100026,'Parlante IBlue ','Parlante Desktop',20,25),
+(100027,'SanDisk UltraShift 32GB','memoria USB',30,75),
+(100028,'Mouse Logitech M110','Mouse Comun',30,58),
+(100029,'Mouse  Genius NX700 ','Mouse Comun',30,50),
+(100030,'Audifonos gamer Teraware','Audifonos',129,25),
+(100031,'Web Cam Logictech','Camara Web',349.9,17),
+(100032,'Mouse Pad Teraware S ','Mouse Pad',19.9,60),
+(100034,'Mouse Inalambrico Teraware 800xb','Mouse Gamer',19.9,59),
+(100035,'Hub Targus 4 USB 3.0','USB Hub',94.9,10),
+(100036,'Mouse Pad Logitech Dark ','Mouse Pad',41,45),
+(100037,'Mouse Genius m170','Mouse Comun',24.9,36)
 go
 
 
@@ -73,20 +67,19 @@ constraint fk_tipoU foreign key(id_tpu) references tipoUsuario(id_tpu)
 )
 go
 
-select*from Usuarios
-go
+
 
 /*alter table Usuarios
 add
 go
 */
-
-insert into Usuarios values
-(123154,'Usuario1','948gkd',1,'Activo','1455@gmail.com'),
-(123213,'Usuario2','9552fkd',1,'Inactivo','po25@gmail.com'),
-(125431,'Usuario3','lsa9d',2,'Activo','us45@gmail.com'),
-(123255,'Usuario4','lsa933',2,'Inactivo','cualquiera@gmail.com'),
-(124215,'Usuario5','8541dasa',3,'Activo','Si@gmail.com')
+insert into Usuarios(cod_us,nom_us,ctr_us,id_tpu,est_us,cor_us) 
+values
+(156234,'JulianHernandez','152asd5',2,'Activo','julhern@gmail.com'),
+(156235,'GloriaMiranda','123421@',3,'No Activo','gmiranda23@gmail.com'),
+(156236,'EstebanCazorla','45sdc2',3,'Activo','ecm@outlook.com'),
+(156237,'EduardoChavez','24k45',1,'Activo','echavez91@gmail.com'),
+(156238,'FelipeUchoa','9597bjso',2,'Activo','felipeucho@gmail.com')
 go
 
 /*alter table Usuarios
@@ -107,8 +100,8 @@ as
 	@STK_PROD)
 go
 
-execute pa_insertar_producto '199832','Test44','Test',20,20
-go
+/*execute pa_insertar_producto '199832','Test44','Test',20,20
+go*/
 
 --Actualizar
 create or alter procedure pa_actualizar_producto
@@ -130,8 +123,8 @@ as
 	where a.nom_prod like @NOM_PROD+'%' and eli_prod='NO'
 go
 
-execute pa_listar_producto ''
-go
+/*execute pa_listar_producto ''
+go*/
 
 --Eliminar
 
@@ -199,8 +192,6 @@ as
 	where a.nom_us like @NOM_US+'%' and eli_us='No'
 go
 
-use Efsrt2
-go
 
 -----------------------------------------------------------------------------------------------------------------------
 

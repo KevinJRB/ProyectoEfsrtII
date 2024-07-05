@@ -6,22 +6,31 @@
 
 <h2>Lista Usuarios</h2>
 
-<div class="alert alert-info alert-dismissible fade show" role="alert">
+@if (TempData["mensaje"] != null)
 
-    <strong>@TempData["mensaje"]</strong>
+{
 
-    <button type="button" class="btn-close"
-            data-bs-dismiss="alert" aria-label="Close">
-    </button>
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
 
-</div>
+        <strong>@TempData["mensaje"]</strong>
+
+        <button type="button" class="btn-close"
+                data-bs-dismiss="alert" aria-label="Close">
+        </button>
+
+    </div>
 
 }
+
 
 <br />
 
 <p>
-    @Html.ActionLink("Nuevo", "CreateUsuario")
+    @Html.ActionLink("Nuevo Usuario", "CreateUsuario", null, new { @class = "btn btn-info" })
+</p>
+
+<p>
+    <a href="@Url.Action("GenerarPdf", "Usuario")" class="btn btn-secondary">Generar PDF</a>
 </p>
 <table class="table">
     <tr>
@@ -68,9 +77,9 @@
                 @Html.DisplayFor(modelItem => item.CorUs)
             </td>
             <td>
-                @Html.ActionLink("Edit", "EditUsuario", new {  id=item.CodUs  }) |
-                @Html.ActionLink("Details", "DetalleUsuario", new {  id=item.CodUs  }) |
-                @Html.ActionLink("Delete", "DeleteUsuario", new {  id=item.CodUs  })
+                @Html.ActionLink("Modificar", "EditUsuario", new { id = item.CodUs }, new { @class = "btn btn-success btn-sm" }) |
+                @Html.ActionLink("Detalles", "DetalleUsuario", new { id = item.CodUs },new { @class = "btn btn-warning btn-sm" }) |
+                @Html.ActionLink("Eliminar", "DeleteUsuario", new { id = item.CodUs }, new { @class = "btn btn-danger btn-sm" })
             </td>
         </tr>
     }

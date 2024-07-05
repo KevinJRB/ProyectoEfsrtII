@@ -84,3 +84,7 @@ C:\Users\Lenovo.Z50\Documents\Ciber 2024-1\POOII\Workspace\ProyectoEFSRT\Proyect
 C:\Users\Lenovo.Z50\Documents\Ciber 2024-1\POOII\Workspace\ProyectoEFSRT\ProyectoEFSRT\obj\Debug\ProyectoEFSRT.csproj.CopyComplete
 C:\Users\Lenovo.Z50\Documents\Ciber 2024-1\POOII\Workspace\ProyectoEFSRT\ProyectoEFSRT\obj\Debug\ProyectoEFSRT.dll
 C:\Users\Lenovo.Z50\Documents\Ciber 2024-1\POOII\Workspace\ProyectoEFSRT\ProyectoEFSRT\obj\Debug\ProyectoEFSRT.pdb
+C:\Users\Lenovo.Z50\Documents\Ciber 2024-1\POOII\Workspace\ProyectoEFSRT\ProyectoEFSRT\bin\BouncyCastle.Cryptography.dll
+C:\Users\Lenovo.Z50\Documents\Ciber 2024-1\POOII\Workspace\ProyectoEFSRT\ProyectoEFSRT\bin\itextsharp.dll
+C:\Users\Lenovo.Z50\Documents\Ciber 2024-1\POOII\Workspace\ProyectoEFSRT\ProyectoEFSRT\bin\BouncyCastle.Cryptography.xml
+C:\Users\Lenovo.Z50\Documents\Ciber 2024-1\POOII\Workspace\ProyectoEFSRT\ProyectoEFSRT\bin\itextsharp.xml

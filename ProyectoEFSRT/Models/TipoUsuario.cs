@@ -8,7 +8,7 @@ namespace ProyectoEFSRT.Models
     public class TipoUsuario
     {
 
-        public char IdTpu { get; set; }
+        public string IdTpu { get; set; }
         public string NomTpu { get; set; }
     }
 }

@@ -4,9 +4,9 @@
     ViewBag.Title = "DeleteUsuario";
 }
 
-<h2>DeleteUsuario</h2>
+<h2>Eliminar</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Confirmar elminiacion de usuario</h3>
 <div>
     <h4>Usuario</h4>
     <hr />
@@ -61,12 +61,18 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
+<div class="form-actions no-color">
+    <input type="submit" value="Delete" class="btn btn-danger" /> |
+    @Html.ActionLink("Volver a lista", "IndexUsuario", null, new { @class = "btn btn-dark" })
+</div>
     }
+</div>
+<br />
+
+<div>
+    @ViewBag.mensaje
 </div>

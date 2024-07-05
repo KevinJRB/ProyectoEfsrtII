@@ -53,6 +53,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "EditProducto", new {  id = Model.CodProd  }) |
-    @Html.ActionLink("Volver", "IndexProductos")
+    @Html.ActionLink("Edit", "EditProducto", new {  id = Model.CodProd }, new { @class = "btn btn-success btn-sm" }) |
+    @Html.ActionLink("Volver", "IndexProductos" ,null,new { @class = "btn btn-primary btn-sm" })
 </p>

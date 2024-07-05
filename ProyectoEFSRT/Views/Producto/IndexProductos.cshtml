@@ -7,8 +7,13 @@
 <h2>Productos</h2>
 
 <p>
-    @Html.ActionLink("Create New", "CreateProducto")
+    @Html.ActionLink("Create New", "CreateProducto", null, new { @class = "btn btn-info" })
 </p>
+
+<p>
+    <a href="@Url.Action("GenerarPdf", "Producto")" class="btn btn-secondary">Generar PDF</a>
+</p>
+
 <table class="table">
     <tr>
         <th>
@@ -47,9 +52,9 @@
             @Html.DisplayFor(modelItem => item.StkProd)
         </td>
         <td>
-            @Html.ActionLink("Modificar", "EditProducto", new {  id=item.CodProd }) |
-            @Html.ActionLink("Ver Detalle", "Details", new {  id=item.CodProd }) |
-            @Html.ActionLink("Eliminar", "BorrarProducto", new {  id=item.CodProd })
+            @Html.ActionLink("Modificar", "EditProducto", new {  id=item.CodProd }, new { @class = "btn btn-success btn-sm" }) |
+            @Html.ActionLink("Ver Detalle", "Details", new {  id=item.CodProd }, new { @class = "btn btn-warning btn-sm" }) |
+            @Html.ActionLink("Eliminar", "BorrarProducto", new {  id=item.CodProd }, new { @class = "btn btn-danger btn-sm" })
         </td>
     </tr>
 }

@@ -10,7 +10,7 @@ namespace ProyectoEFSRT.Models
         public string CodUs { get; set; }
         public string NomUs { get; set; }
         public string CtrUs { get; set; }
-        public char IdTpu { get; set; }
+        public string IdTpu { get; set; }
         public string EstUs { get; set; }
         public string CorUs { get; set; }
     }

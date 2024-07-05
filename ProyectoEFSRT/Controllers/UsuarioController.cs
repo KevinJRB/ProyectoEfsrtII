@@ -6,6 +6,9 @@ using System.Web.Mvc;
 
 using ProyectoEFSRT.Models;
 using ProyectoEFSRT.DAO;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
+using System.IO;
 
 namespace ProyectoEFSRT.Controllers
 {
@@ -17,8 +20,50 @@ namespace ProyectoEFSRT.Controllers
         // GET: Usuario
         public ActionResult IndexUsuario()
         {
+            
 
             return View(usdao.GetUsuarios());
+        }
+
+       public ActionResult GenerarPdf()
+        {
+            var usuarios = usdao.GetUsuarios();
+
+            MemoryStream workStream = new MemoryStream();
+            Document document = new Document();
+            PdfWriter.GetInstance(document, workStream).CloseStream = false;
+            document.Open();
+
+            // Add content to the PDF
+            document.Add(new Paragraph("Lista de Usuarios"));
+            document.Add(new Paragraph(" "));
+
+            PdfPTable table = new PdfPTable(6);
+            table.AddCell("CodUs");
+            table.AddCell("NomUs");
+            table.AddCell("CtrUs");
+            table.AddCell("IdTpu");
+            table.AddCell("EstUs");
+            table.AddCell("CorUs");
+
+            foreach (var usuario in usuarios)
+            {
+                table.AddCell(usuario.CodUs);
+                table.AddCell(usuario.NomUs);
+                table.AddCell(usuario.CtrUs);
+                table.AddCell(usuario.IdTpu.ToString());
+                table.AddCell(usuario.EstUs);
+                table.AddCell(usuario.CorUs);
+            }
+
+            document.Add(table);
+            document.Close();
+
+            byte[] byteInfo = workStream.ToArray();
+            workStream.Write(byteInfo, 0, byteInfo.Length);
+            workStream.Position = 0;
+
+            return File(workStream, "application/pdf", "ListaUsuarios.pdf");
         }
 
         // GET: Usuario/Details/5
@@ -151,7 +196,7 @@ namespace ProyectoEFSRT.Controllers
             }
 
         }
-        public ActionResult EditTUsuario(int id)
+        public ActionResult EditTUsuario(string id)
         {
             TipoUsuario tu = tusdao.GetTiposUsuario().Find(tus => tus.IdTpu == id);
 
@@ -181,7 +226,7 @@ namespace ProyectoEFSRT.Controllers
         }
 
         // GET: Usuario/Delete/5
-        public ActionResult DeleteTUsuario(int id)
+        public ActionResult DeleteTUsuario(string id)
         {
             TipoUsuario tu = tusdao.GetTiposUsuario().Find(tus => tus.IdTpu == id);
 

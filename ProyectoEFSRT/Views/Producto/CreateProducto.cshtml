@@ -54,18 +54,16 @@
                 @Html.ValidationMessageFor(model => model.StkProd, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        <br />
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" onclick="return confirm('Confirmar creacion de Producto')"/>
+                <input type="submit" value="Create" class="btn btn-info" onclick="return confirm('Confirmar creacion de Producto')" /> |
+                @Html.ActionLink("Regresar", "IndexProductos", null, new { @class = "btn btn-primary" })
             </div>
         </div>
     </div>
 }
 
-<!--<div>
-    @Html.ActionLink("Regresar", "IndexProductos")
-</div>-->
 
 <div>
     @ViewBag.mensaje

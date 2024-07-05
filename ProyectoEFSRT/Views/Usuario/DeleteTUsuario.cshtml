@@ -6,7 +6,6 @@
 
 <h2>Eliminar Tipo</h2>
 
-<h3>Are you sure you want to delete this?</h3>
 <div>
     <h4>TipoUsuario</h4>
     <hr />
@@ -35,7 +34,7 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-danger" /> |
-            @Html.ActionLink("Volver a Lista", "IndexTUsuario")
+            @Html.ActionLink("Volver a Lista", "IndexTUsuario", null, new { @class = "btn btn-dark" })
         </div>
     }
 </div>

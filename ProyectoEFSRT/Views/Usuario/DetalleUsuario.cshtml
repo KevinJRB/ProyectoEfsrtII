@@ -4,7 +4,7 @@
     ViewBag.Title = "DetalleUsuario";
 }
 
-<h2>DetalleUsuario</h2>
+<h2>Informacion de Usuario</h2>
 
 <div>
     <h4>Usuario</h4>
@@ -61,6 +61,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Modificar", "EditUsuario", new { id = Model.CodUs  }, new { @class = "btn btn-success" }) |
+    @Html.ActionLink("Volver al indice", "IndexUsuario",null, new { @class = "btn btn-dark" })
 </p>

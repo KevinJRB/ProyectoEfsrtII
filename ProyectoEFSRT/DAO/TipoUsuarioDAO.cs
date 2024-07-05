@@ -29,7 +29,7 @@ namespace ProyectoEFSRT.DAO
                 {
                     lista.Add(new TipoUsuario()
                     {
-                        IdTpu = dr.GetChar(0),
+                        IdTpu = dr.GetString(0),
                         NomTpu = dr.GetString(1)
                     });
                 }

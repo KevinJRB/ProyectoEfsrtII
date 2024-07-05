@@ -6,6 +6,9 @@ using System.Web.Mvc;
 
 using ProyectoEFSRT.Models;
 using ProyectoEFSRT.DAO;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
+using System.IO;
 
 namespace ProyectoEFSRT.Controllers
 {
@@ -20,6 +23,45 @@ namespace ProyectoEFSRT.Controllers
 
             return View(prodao.GetProductos());
         }
+        public ActionResult GenerarPdf()
+        {
+            var productos = prodao.GetProductos();
+
+            MemoryStream workStream = new MemoryStream();
+            Document document = new Document();
+            PdfWriter.GetInstance(document, workStream).CloseStream = false;
+            document.Open();
+
+            // Add content to the PDF
+            document.Add(new Paragraph("Lista de Productos"));
+            document.Add(new Paragraph(" "));
+
+            PdfPTable table = new PdfPTable(5);
+            table.AddCell("CodProd");
+            table.AddCell("NomProd");
+            table.AddCell("DescProd");
+            table.AddCell("PreProd");
+            table.AddCell("StkProd");
+
+            foreach (var producto in productos)
+            {
+                table.AddCell(producto.CodProd);
+                table.AddCell(producto.NomProd);
+                table.AddCell(producto.DescProd);
+                table.AddCell(producto.PreProd.ToString());
+                table.AddCell(producto.StkProd.ToString());
+            }
+
+            document.Add(table);
+            document.Close();
+
+            byte[] byteInfo = workStream.ToArray();
+            workStream.Write(byteInfo, 0, byteInfo.Length);
+            workStream.Position = 0;
+
+            return File(workStream, "application/pdf", "ListaProductos.pdf");
+        }
+
 
         // GET: Producto/Details/5
         public ActionResult Details(string id)
@@ -60,7 +102,7 @@ namespace ProyectoEFSRT.Controllers
         public ActionResult EditProducto(string id)
         {
             Producto p = prodao.GetProductos().Find(pro => pro.CodProd == id);
-            return View();
+            return View(p);
         }
 
         // POST: Producto/Edit/5
